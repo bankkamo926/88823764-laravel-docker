@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300&display=swap');
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans Thai', sans-serif;
+    font-weight: 700;
+}
+
+body
+{
+    min-height: 100vh;
+    background: #DCDCDC;
+}
+
+.logo
+{
+    width: 100px;
+    height: 100px;
+    
+}
+
+.logo img
+{
+    width: 394px;
+    height: 104px;
+    left: 34px;
+    top: 26px;
+    object-fit: contain;
+    background: white;
+}
+
+.navigation
+{
+    position: fixed;
+    height: 1080px;
+    width: 394px;
+    box-sizing: initial;
+    background: white;
+}
+
+.navigation ul
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-left: 40px;
+    padding-top: 80px;
+    
+}
+
+.navigation ul li
+{
+    position: relative;
+    list-style: none;
+    width: 100%;
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+}
+
+.navigation ul li.active
+{
+    background: #E1032B;
+}
+
+.navigation ul li a
+{
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: #6A6A6A;
+    height: 85px;
+    padding-top: 20px;
+    margin-bottom: 35px;
+}
+
+
+.navigation ul li a:hover
+{
+    color: #E1032B;
+}
+
+.navigation ul li.active a
+{
+    color: white;
+}
+
+.navigation ul li a .icon
+{
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+}
+
+.navigation ul li a .icon ion-icon
+{
+    
+    font-size: 2em;
+}
+
+.navigation ul li a .title
+{
+    position: relative;
+    display: block;
+    padding-left: 30px;
+    height: 60px;
+    line-height: 50px;
+    font-size: 1.2em;
+    white-space: normal;
+     
+}
+.name {
+    position: relative;
+}
+.name {
+    position: absolute;
+    top: 0px;
+    right: 13%;
+}
+.logout {
+    position: relative;
+}
+.logout{
+    position: absolute;
+    top: 0%;
+    right: 3%;
+}
