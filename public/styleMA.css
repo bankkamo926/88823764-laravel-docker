@@ -13,7 +13,7 @@ body{
     min-height: 100vh;
     background: #B7B7B7;
     height: 10000px;
-    
+
 }
 
 /* sidebar css start */
@@ -28,7 +28,7 @@ body{
     box-sizing: initial;
     background: #fff;
     transition: 0.5s;
-    overflow-x: hidden; 
+    overflow-x: hidden;
     z-index: 1;
 }
 
@@ -64,6 +64,9 @@ header .image-text .name.active{
     transition: 0.5s;
 }
 
+.name-align{
+    display: flex;
+}
 
 .navigation header .image{
     display: flex;
@@ -126,7 +129,7 @@ header .image-text .name.active{
     font-size: 0;
     transition-duration: 0.5s;
     transition-property: font-size;
-    
+
 }
 
 .title_2.active,
@@ -342,7 +345,7 @@ nav{
 }
 
 .profile{
-    width: 50px; 
+    width: 50px;
     border-radius: 50%;
     cursor: pointer;
 }
@@ -360,7 +363,7 @@ nav ul li{
 nav ul li a{
     color: #373737;
     font-size: 12px;
-    
+
 }
 
 nav ul li h4{
@@ -399,7 +402,7 @@ nav ul li h4{
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
     /* box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.25); */
-    
+
 }
 
 .sub-menu-logout{
@@ -415,7 +418,7 @@ nav ul li h4{
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: #525252;    
+    color: #525252;
     font-size: 12px;
 }
 
@@ -450,7 +453,7 @@ nav ul li h4{
 }
 
 .sub-menu-logout:hover{
-    background-color: #E1032B;   
+    background-color: #E1032B;
 }
 
 

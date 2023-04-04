@@ -71,12 +71,12 @@
     <div class="topbar">
         <nav>
             <ul>
-                <li><h4>นาย เอ บี</h4></li>
+            <li><h4>{{Auth::user()->name}}{{' '}}{{Auth::user()->emp_lname}}</h4></li>
                 <li><a>เจ้าหน้าที่ฝ่ายเทคนิค</a></li>
 
             </ul>
             <div class="line"></div>
-            <img src="img/xavier.png" class="profile" onclick="toggleMenu()">
+            <img src="imgpro/{{Auth::user()->emp_picture}}" class="profile" onclick="toggleMenu()">
 
             <div class="sub-menu-wrap" id="subMenu">
                 <div class="sub-menu-swap">

@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+
 
 class HomeController extends Controller
 {
@@ -23,6 +29,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('');
+        if(Auth::User()->emp_dep_id == "1"){
+            return view('managerhome');
+        }else if(Auth::User()->emp_dep_id == "2"){
+            return view('suphome');
+        }else if(Auth::User()->emp_dep_id == "3"){
+            return view('userhome');
+        }
     }
 }
