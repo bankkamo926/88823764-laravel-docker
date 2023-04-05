@@ -16,7 +16,9 @@ return new class extends Migration
         Schema::create('equipments', function (Blueprint $table) {
             $table->id('eqm_id');
             $table->string('eqm_name');
+            $table->string('eqm_type');
             $table->string('eqm_serial_number');
+            $table->string('eqm_details_equipment');
             $table->string('eqm_picture');
             $table->unsignedbiginteger('eqm_emp_id');
             $table->timestamps();

@@ -63,23 +63,31 @@
     <div class="topbar">
         <nav>
             <ul>
-                <li><h4>นาย เอ บี</h4></li>
+                <li><h4>{{Auth::user()->name}}{{' '}}{{Auth::user()->emp_lname}}</h4></li>
                 <li><a>ผู้ใช้ทั่วไป</a></li>
 
             </ul>
             <div class="line"></div>
-            <img src="img/xavier.png" class="profile" onclick="toggleMenu()">
+            <img src="imgpro/{{Auth::user()->emp_picture}}" class="profile" onclick="toggleMenu()">
+
 
             <div class="sub-menu-wrap" id="subMenu">
                 <div class="sub-menu-logout">
-                    <a href="#" class="sub-menu-link">
+                    <a href="{{ route('logout') }}" class="sub-menu-link"
+                    onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
                         <img src="img/logout-icon.png">
                         <img src="img/whiite-logout-icon.png">
                         <p>ออกจากระบบ</p>
                     </a>
                 </div>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+                </form>
+                
 
             </div>
+
         </nav>
 
     </div>

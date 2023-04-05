@@ -30,9 +30,9 @@ class HomeController extends Controller
     public function index()
     {
         if(Auth::User()->emp_dep_id == "1"){
-            return view('managerhome');
+            return view('dashboardmanager');
         }else if(Auth::User()->emp_dep_id == "2"){
-            return view('suphome');
+            return view('dashboardsup');
         }else if(Auth::User()->emp_dep_id == "3"){
             return view('userhome');
         }

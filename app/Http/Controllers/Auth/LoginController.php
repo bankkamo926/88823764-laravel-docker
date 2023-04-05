@@ -35,7 +35,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = "home";
 
     /**
      * Create a new controller instance.
@@ -49,12 +49,21 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        if(Auth::User()->emp_dep_id == "1"){
-            return view('managerhome');
-        }else if(Auth::User()->emp_dep_id == "2"){
-            return view('suphome');
-        }else if(Auth::User()->emp_dep_id == "3"){
-            return view('userhome');
+        // if(Auth::User()->emp_dep_id == "1"){
+        //     return view('managerhome');
+        // }else if(Auth::User()->emp_dep_id == "2"){
+        //     return view('suphome');
+        // }else if(Auth::User()->emp_dep_id == "3"){
+        //     return view('userhome');
+        // }
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)) {
+            return redirect()->route('home');
         }
 
     }

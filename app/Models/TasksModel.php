@@ -4,9 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+date_default_timezone_set('Asia/Bangkok');
 
 class TasksModel extends Model
 {
+
     use HasFactory;
     protected $fillable = [
         'task_status',
