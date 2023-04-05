@@ -7,10 +7,8 @@
     <title>IT Manager</title>
     <link rel="stylesheet" href="styledash.css">
 
-
 </head>
 <body>
-
 
     <!-- sidebar start -->
     <div class="navigation">
@@ -70,8 +68,6 @@
                     <span class="title_5">เพิ่มผู้ใช้</span>
                 </a>
             </li>
-
-
         </ul>
     </div>
 
@@ -83,8 +79,8 @@
             <ul>
                 <li><h4>{{Auth::user()->name}}{{' '}}{{Auth::user()->emp_lname}}</h4></li>
                 <li><a>ผู้จัดการฝ่ายเทคนิค</a></li>
-
             </ul>
+
             <div class="line"></div>
             <img src="imgpro/{{Auth::user()->emp_picture}}" class="profile" onclick="toggleMenu()">
 
@@ -108,13 +104,11 @@
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf
                     </form>
-
                 </div>
-
             </div>
         </nav>
-
     </div>
+
     <!-- topbar end -->
 
     <div class="main">
@@ -156,7 +150,6 @@
                     <div>
                         <div class="meter"><h3>รายการ</h3></div>
                     </div>
-
                 </div>
 
                 <div class="card two">
@@ -186,6 +179,7 @@
         </div>
 
         <!-- content end -->
+
     </div>
 
 
@@ -199,6 +193,51 @@
     <script src="scriptMA.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="my_chart.js"></script>
+    <script>
+        Chart.defaults.font.family = 'Noto Sans Thai';
+
+const ctx = document.getElementById('myChart');
+const earning = document.getElementById('earning');
+
+    new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+
+// <?php
+
+// session_start();
+// $_SESSION['success_task_repairs'] = 0;
+// if((Auth::task_repairs()->tr_status == '3')){
+//     ++$_SESSION['success_task_repairs'];
+// }
+
+
+// $_SESSION['success_task_requests'] = 0;
+// if((Auth::task_requests()->tre_status == '3')){
+//     ++$_SESSION['success_task_requests'];
+// }
+
+// $_SESSION['success_task'] = $_SESSION['success_task_repairs'] + $_SESSION['success_task_requests'];
+
+// ?>
+
+        datasets: [{
+        label: 'ตารางงาน',
+        data: [$_SESSION['success_task'], 15, 30],
+        borderWidth: 1,
+        backgroundColor: ["rgba(255, 138, 0, 1)", "rgba(105, 55, 170, 1)", "rgba(247, 186, 30, 1)"],
+      }]
+    },
+    options: {
+      plugin: {
+        legend:{
+          position: 'bottom'
+        }
+      }
+    }
+  });
+
+    </script>
 
 </body>
 </html>

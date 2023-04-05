@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('sd_serial_number');
             $table->unsignedbiginteger('sd_stk_id');
             $table->timestamps();
+
             $table->foreign('sd_stk_id')->references('stk_id')->on('stocks');
         });
     }

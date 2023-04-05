@@ -22,11 +22,11 @@ return new class extends Migration
             $table->string('stk_pictrue');
             $table->biginteger('stk_quantity');
             $table->unsignedbiginteger('stk_emp_id');
-            $table->unsignedbiginteger('stk_task_id');
+            $table->unsignedbiginteger('stk_tre_id');
             $table->timestamps();
 
-            $table->foreign('stk_emp_id')->references('emp_id')->on('users');
-            $table->foreign('stk_task_id')->references('task_id')->on('tasks');
+            $table->foreign('stk_emp_id')->references('id')->on('users');
+            $table->foreign('stk_tre_id')->references('tre_id')->on('task_requests');
         });
     }
 

@@ -17,13 +17,14 @@ return new class extends Migration
             $table->id('eqm_id');
             $table->string('eqm_name');
             $table->string('eqm_type');
-            $table->string('eqm_serial_number');
+            $table->string('eqm_series');
             $table->string('eqm_details_equipment');
+            $table->string('eqm_serial_number');
             $table->string('eqm_picture');
             $table->unsignedbiginteger('eqm_emp_id');
             $table->timestamps();
 
-            $table->foreign('eqm_emp_id')->references('emp_id')->on('users');
+            $table->foreign('eqm_emp_id')->references('id')->on('users');
         });
     }
 
