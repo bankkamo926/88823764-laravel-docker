@@ -220,10 +220,9 @@ const earning = document.getElementById('earning');
 // $_SESSION['success_task'] = $_SESSION['success_task_repairs'] + $_SESSION['success_task_requests'];
 
 // ?>
-
         datasets: [{
         label: 'ตารางงาน',
-        data: [$_SESSION['success_task'], 15, 30],
+        data: [2, 15, 30],
         borderWidth: 1,
         backgroundColor: ["rgba(255, 138, 0, 1)", "rgba(105, 55, 170, 1)", "rgba(247, 186, 30, 1)"],
       }]
