@@ -1,8 +1,8 @@
 /*
  * It support, IT manager
- * css for dashboard
+ * css for table
  * @Author : Nattawut Somdulyakanok 64160066
- * @Create Date: 2023-03-04
+ * @Create Date: 2023-03-05
 */
 
 /* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap'); */
@@ -330,7 +330,7 @@ header .image-text .name.active{
 /* topbar css start */
 
 
-nav{
+.topbar nav{
     width: 100%;
     padding: 20px 3%;
     display: flex;
@@ -349,23 +349,23 @@ nav{
     cursor: pointer;
 }
 
-nav ul{
+.topbar nav ul{
     width: 100%;
     text-align: right;
     margin-right: 20px;
 }
 
-nav ul li{
+.topbar nav ul li{
     list-style: none;
 }
 
-nav ul li a{
+.topbar nav ul li a{
     color: #373737;
     font-size: 12px;
 
 }
 
-nav ul li h4{
+.topbar nav ul li h4{
     color: #373737;
 }
 
@@ -388,12 +388,12 @@ nav ul li h4{
     max-height: 0px;
     overflow: hidden;
     transition: max-height 0.5s;
-    z-index:10 ;
+    z-index: 10;
 }
 
 .sub-menu-wrap.open-menu{
     max-height: 160px;
-    z-index:11;
+    z-index: 11;
 }
 
 .sub-menu-swap{
@@ -402,8 +402,8 @@ nav ul li h4{
     padding: .5px 5px;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
+    z-index: 8;
     /* box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.25); */
-    z-index:8;
 
 }
 
@@ -413,8 +413,8 @@ nav ul li h4{
     padding: .5px 5px;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
+    z-index: 9;
     /* box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.25); */
-    z-index:9;
 }
 
 .sub-menu-link{
@@ -457,7 +457,6 @@ nav ul li h4{
 
 .sub-menu-logout:hover{
     background-color: #E1032B;
-
 }
 
 
@@ -474,170 +473,102 @@ nav ul li h4{
     max-height: 91.4vh;
     top: 60px;
     z-index: 7;
-
 }
 
 .content-box{
     position: relative;
     width: 100%;
     padding: 20px;
-    display: grid;
-    grid-template-columns:  2fr 1fr;
+    min-height: 490px;
     /* grid-gap: 30px; */
     background-color: white;
-    border-radius: 82px;
-    top: 30px;
-
+    border-radius: 60px;
+    top: 90px;
 }
 
-.task{
-    left: 15px;
-}
-
-.task h2{
-    font-size: 30px;
-}
-
-.graphBox{
-    position: relative;
+.content-box table{
     width: 100%;
-    /* margin-left: 1%; */
-    max-width: 600px;
-    /* padding: 20px; */
-    display: grid;
-    /* grid-gap: 30px; */
-    min-height: 200px;
-    align-items: center;
+    border-collapse: collapse;
+    /* margin-top: 10px; */
+    padding-bottom: 10px;
+}
+
+.content-box table tr{
+    /* color: black; */
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.content-box table tr td{
     text-align: center;
-    /* background-color: blue; */
+    padding: 12px;
 }
 
-.legend{
-    margin-left: 8%;
-    width: 480px;
+.content-box table tr td select{
+    border: .5px solid #BEBEBE ;
+    border-radius: 5px;
+
+}
+
+.sort{
+    border-radius: 27px;
+    background-color: #fff;
+    top: 80px;
+    position: absolute;
+    left: 340px;
+    min-height: 50px;
     display: flex;
-    justify-content: center;
     align-items: center;
-    /* background-color: #373737; */
-}
-
-.cir{
-    height: 15px;
-    width: 15px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    margin-right: 15px;
-
-}
-
-.cir.first{
-    background-color: #FF8A00;
-}
-
-.cir.second{
-    background-color: #6937AA;
-}
-
-.cir.third{
-    background-color: #F7BA1E;
-}
-
-.graphBox .box{
-    position: relative;
-    background: #fff;
-    padding-bottom: 20px;
-    width: 60%;
-    /* box-shadow: 0 7px 25px rgba(0,0,0,0.08); */
-    border-radius: 20px;
-    margin-left: 20%;
-}
-
-.cardBox{
-    position: relative;
-    width: 100%;
-    min-width: 500px;
-    padding: 20px;
-    display: grid;
-    grid-template-columns: repeat(1, 3fr);
-    grid-gap: 30px;
-    /* background-color: red; */
-
-}
-
-.cardBox .card{
-    margin-right: 8%;
-    position: relative;
-    min-height: 150px;
-    background: white;
-    padding: 15px;
-    border-radius: 20px;
-    display: flex;
+    /* max-width: 700px; */
+    z-index: 30;
     justify-content: space-between;
-    cursor: pointer;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-/* .cardBox .card:hover{
+.sort header a{
+    display: block;
+    color: #000000;
+    padding: 13px 25px;
+    border-radius: 50px;
 
-
-} */
-
-.cardName{
-    width: 150px;
-}
-
-.cardBox .card.one{
-    border-left: 10px solid #FF8A00;
-}
-
-.cardBox .card.two{
-    border-left: 10px solid #6937AA;
-}
-
-.cardBox .card.three{
-    border-left: 10px solid #F7BA1E;
-}
-
-.cardBox .card.one:hover{
-    border: 10px solid #FF8A00;
-}
-
-.cardBox .card.two:hover{
-    border: 10px solid #6937AA;
-}
-
-.cardBox .card.three:hover{
-    border: 10px solid #F7BA1E;
-}
-
-.cardBox .numbers{
-    font-weight: 700;
-    padding-right: 80px;
-    /* background-color: #373737; */
-    font-size: 34px;
+    margin-top: 0 5px;
+    min-width: 150px;
     text-align: center;
-    position: relative;
-    top: 10px;
-    color: #FF8A00;;
+    text-decoration: none;
+    font-size: 16px;
 }
 
-.cardBox .meter{
-
-    /* width: 300px; */
-    /* background-color: #373737; */
-    text-align: center;
-    position: relative;
-    top: 85px;
+.sort header a:hover{
+    color: #E1032B;
 }
 
-.cardBox .numbers.two{
-    color: #6937AA;;
+.sort header{
+    display: flex;
+    justify-content: flex-start;;
 }
 
-.cardBox .numbers.three{
-    color: #F7BA1E;;
+.nav__links{
+    list-style: none;
+    right: 50%;
 }
+
+.nav__links li{
+    display: inline-block;
+    /* padding: 0px 20px; */
+}
+
+.nav__links li a{
+    transition: all 0.3s ease 0s;
+}
+
+.sort ul li.active{
+    background: #E1032B;
+    border-radius: 27px;
+}
+
+.sort ul li.active a{
+    color:#FFFF;
+}
+
+
 
 @media only screen and (max-width: 600px) {
     .navigation{
@@ -648,3 +579,4 @@ nav ul li h4{
         width: 100%;
     }
 }
+

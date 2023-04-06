@@ -1,18 +1,11 @@
 {{--
-It support
-fix history table
+It manager
+requisition history table
 @Author : Nattawut Somdulyakanok 64160066
 @Create Date: 2023-03-05
 --}}
 
-{{-- It support
-show form database(php)
-@Author : Veerachart Permjarat 64160287
-@Date :2023-04-06 --}}
-
-
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -28,57 +21,67 @@ show form database(php)
 
     <div class="container">
         <!-- sidebar start -->
-    <div class="navigation">
-        <!-- <div class="logo">
-            <img src="img/clicknext.webp" alt="clickn" class="clickn">
-            <img src="img/onlyC.png" class="clicknS">
-        </div> -->
+        <div class="navigation">
 
-        <!-- Title and toggle start -->
+            <header>
+                <div class="image-text">
+                    <span class="image">
+                        <img src="img/onlyC.png" class="c">
+                    </span>
 
-        <header>
-            <div class="image-text">
-                <span class="image">
-                    <img src="img/onlyC.png" class="c">
-                </span>
-
-                <div class="logo-text">
-                    <span class="name">Clicknext</span>
+                    <div class="logo-text">
+                        <span class="name">Clicknext</span>
+                    </div>
                 </div>
-            </div>
 
-            <ion-icon name="chevron-forward-outline" class="toggle"></ion-icon>
-        </header>
+                <ion-icon name="chevron-forward-outline" class="toggle"></ion-icon>
+            </header>
 
-        <ul>
-            <li class="list">
-                <b></b>
-                <b></b>
-                <a href="#">
-                    <span class="icon"><ion-icon name="newspaper-outline"></ion-icon></span>
-                    <span class="title">หน้าหลัก</span>
-                </a>
-            </li>
-            <li class="list active">
-                <b></b>
-                <b></b>
-                <a href="#">
-                    <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
-                    <span class="title_2">ตารางซ่อม</span>
-                </a>
-            </li>
-            <li class="list">
-                <b></b>
-                <b></b>
-                <a href="IT_Support_Request.html">
-                    <span class="icon"><ion-icon name="cube-outline"></ion-icon></span>
-                    <span class="title_3">ตารางเบิก</span>
-                </a>
-            </li>
+            <ul>
+                <li class="list">
+                    <b></b>
+                    <b></b>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="newspaper-outline"></ion-icon></span>
+                        <span class="title">หน้าหลัก</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <b></b>
+                    <b></b>
+                    <a href="IT_Manager_Fix.html">
+                        <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
+                        <span class="title_2">ตารางซ่อม</span>
+                    </a>
+                </li>
+                <li class="list active">
+                    <b></b>
+                    <b></b>
+                    <a href="IT_Manager_Request.html">
+                        <span class="icon"><ion-icon name="cube-outline"></ion-icon></span>
+                        <span class="title_3">ตารางเบิก</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <b></b>
+                    <b></b>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="refresh-circle-outline"></ion-icon></span>
+                        <span class="title_4">อัพเดทคลัง</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <b></b>
+                    <b></b>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="people-outline"></ion-icon></span>
+                        <span class="title_5">เพิ่มผู้ใช้</span>
+                    </a>
+                </li>
 
 
-        </ul>
-    </div>
+            </ul>
+        </div>
 
     <!-- sidebar end -->
 
@@ -87,12 +90,12 @@ show form database(php)
 
         <nav>
             <ul>
-                <li><h4>{{Auth::user()->name}}{{' '}}{{Auth::user()->emp_lname}}</h4></li>
+                <li><h4>นาย เอ บี</h4></li>
                 <li><a>เจ้าหน้าที่ฝ่ายเทคนิค</a></li>
 
             </ul>
             <div class="line"></div>
-            <img src="imgpro/{{Auth::user()->emp_picture}}" class="profile" onclick="toggleMenu()">
+            <img src="img/xavier.png" class="profile" onclick="toggleMenu()">
 
             <div class="sub-menu-wrap" id="subMenu">
                 <div class="sub-menu-swap">
@@ -102,19 +105,12 @@ show form database(php)
                         <p>หน้าจอผู้ใช้บริการ</p>
                     </a>
                 </div>
-
                 <div class="sub-menu-logout">
-                    <a href="{{ route('logout') }}" class="sub-menu-link"
-                    onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();">
+                    <a href="#" class="sub-menu-link">
                         <img src="img/logout-icon.png">
                         <img src="img/whiite-logout-icon.png">
                         <p>ออกจากระบบ</p>
-
                     </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                    </form>
                 </div>
 
             </div>
@@ -153,10 +149,8 @@ show form database(php)
                     </tr>
                 </thead>
                 <tbody>
-
                     <tr>
-
-                        <td><?php {{$shownumber = DB::table('task_repairs')->where('tr_id', 1)}} ?></td>
+                        <td>000157</td>
                         <td>สมชาย หยิ่งผยอง</td>
                         <td>เครื่องพิมพ์</td>
                         <td>สมปอง เก่งการช่าง</td>
@@ -170,7 +164,6 @@ show form database(php)
                             </select>
                         </td>
                     </tr>
-
                     <tr>
                         <td>000158</td>
                         <td>สมชาย หยิ่งผยอง</td>

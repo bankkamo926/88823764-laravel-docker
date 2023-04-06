@@ -1,3 +1,10 @@
+{{--
+IT Support
+Dashboard for ITManager
+@Author : Nattawut Somdulyakanok 64160066
+@Create Date: 2023-04-06
+--}}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,7 +46,7 @@
             <li class="list active">
                 <b></b>
                 <b></b>
-                <a href="#">
+                <a href="/">
                     <span class="icon"><ion-icon name="newspaper-outline"></ion-icon></span>
                     <span class="title">หน้าหลัก</span>
                 </a>
@@ -47,7 +54,7 @@
             <li class="list">
                 <b></b>
                 <b></b>
-                <a href="#">
+                <a href="/repair_sup">
                     <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
                     <span class="title_2">ตารางซ่อม</span>
                 </a>
@@ -55,7 +62,7 @@
             <li class="list">
                 <b></b>
                 <b></b>
-                <a href="#">
+                <a href="/requsition_sup">
                     <span class="icon"><ion-icon name="cube-outline"></ion-icon></span>
                     <span class="title_3">ตารางเบิก</span>
                 </a>
@@ -142,7 +149,12 @@
                         <div class="cardName"><h3>กำลังซ่อม</h3></div>
                     </div>
                     <div>
-                        <div class="numbers one"><h1>2</h1></div>
+                        <?php
+                        $count_complete_repairs = DB::table('task_repairs')->where('tr_status', 3)->count();
+                        $count_complete_requests = DB::table('task_requests')->where('tre_status', 3)->count();
+                        $count_result_complete=$count_complete_repairs+$count_complete_requests;
+                        ?>
+                        <div class="numbers one"><h1>{{$count_result_complete}}</h1></div>
                     </div>
                     <div>
                         <div class="meter"><h3>รายการ</h3></div>
@@ -155,7 +167,12 @@
                         <div class="cardName"><h3>จอง</h3></div>
                     </div>
                     <div>
-                        <div class="numbers two"><h1>15</h1></div>
+                        <?php
+                        $count_reserve_repairs = DB::table('task_repairs')->where('tr_status', 1)->count();
+                        $count_reserve_requests = DB::table('task_requests')->where('tre_status', 1)->count();
+                        $count_result_reserve=$count_reserve_repairs+$count_reserve_requests;
+                        ?>
+                        <div class="numbers two"><h1>{{$count_result_reserve}}</h1></div>
                     </div>
                     <div>
                         <div class="meter"><h3>รายการ</h3></div>
@@ -167,7 +184,12 @@
                         <div class="cardName"><h3>รอดำเนินการ</h3></div>
                     </div>
                     <div>
-                        <div class="numbers three"><h1>30</h1></div>
+                        <?php
+                        $count_wait_repairs = DB::table('task_repairs')->where('tr_status', 2)->count();
+                        $count_wait_requests = DB::table('task_requests')->where('tre_status', 2)->count();
+                        $count_result_wait=$count_wait_repairs+$count_wait_requests;
+                        ?>
+                        <div class="numbers three"><h1>{{$count_result_wait}}</h1></div>
                     </div>
                     <div>
                         <div class="meter"><h3>รายการ</h3></div>
@@ -205,7 +227,7 @@
           data: {
             datasets: [{
               label: 'ตารางงาน',
-              data: [2, 15, 30],
+              data: [{{$count_result_complete}}, {{$count_result_reserve}},{{$count_result_wait}}],
               borderWidth: 1,
               backgroundColor: ["rgba(255, 138, 0, 1)", "rgba(105, 55, 170, 1)", "rgba(247, 186, 30, 1)"],
             }]

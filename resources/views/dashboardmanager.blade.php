@@ -1,5 +1,9 @@
+{{--
 ITManager
 Dashboard for ITManager
+@Author : Nattawut Somdulyakanok 64160066
+@Create Date: 2023-04-06
+--}}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -42,7 +46,7 @@ Dashboard for ITManager
             <li class="list">
                 <b></b>
                 <b></b>
-                <a href="#">
+                <a href="{{ url('repair_manager') }}">
                     <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
                     <span class="title_2">ตารางซ่อม</span>
                 </a>
@@ -50,7 +54,7 @@ Dashboard for ITManager
             <li class="list">
                 <b></b>
                 <b></b>
-                <a href="#">
+                <a href="\requsition_manage">
                     <span class="icon"><ion-icon name="cube-outline"></ion-icon></span>
                     <span class="title_3">ตารางเบิก</span>
                 </a>
@@ -148,11 +152,17 @@ Dashboard for ITManager
                         <div class="cardName"><h3>กำลังซ่อม</h3></div>
                     </div>
                     <div>
-                        <div class="numbers one"><h1>2</h1></div>
+                        <?php
+                        $count_complete_repairs = DB::table('task_repairs')->where('tr_status', 3)->count();
+                        $count_complete_requests = DB::table('task_requests')->where('tre_status', 3)->count();
+                        $count_result_complete=$count_complete_repairs+$count_complete_requests;
+                        ?>
+                        <div class="numbers one"><h1>{{$count_result_complete}}</h1></div>
                     </div>
                     <div>
                         <div class="meter"><h3>รายการ</h3></div>
                     </div>
+
                 </div>
 
                 <div class="card two">
@@ -160,7 +170,12 @@ Dashboard for ITManager
                         <div class="cardName"><h3>จอง</h3></div>
                     </div>
                     <div>
-                        <div class="numbers two"><h1>15</h1></div>
+                        <?php
+                        $count_reserve_repairs = DB::table('task_repairs')->where('tr_status', 1)->count();
+                        $count_reserve_requests = DB::table('task_requests')->where('tre_status', 1)->count();
+                        $count_result_reserve=$count_reserve_repairs+$count_reserve_requests;
+                        ?>
+                        <div class="numbers two"><h1>{{$count_result_reserve}}</h1></div>
                     </div>
                     <div>
                         <div class="meter"><h3>รายการ</h3></div>
@@ -172,7 +187,12 @@ Dashboard for ITManager
                         <div class="cardName"><h3>รอดำเนินการ</h3></div>
                     </div>
                     <div>
-                        <div class="numbers three"><h1>30</h1></div>
+                        <?php
+                        $count_wait_repairs = DB::table('task_repairs')->where('tr_status', 2)->count();
+                        $count_wait_requests = DB::table('task_requests')->where('tre_status', 2)->count();
+                        $count_result_wait=$count_wait_repairs+$count_wait_requests;
+                        ?>
+                        <div class="numbers three"><h1>{{$count_result_wait}}</h1></div>
                     </div>
                     <div>
                         <div class="meter"><h3>รายการ</h3></div>
@@ -182,8 +202,10 @@ Dashboard for ITManager
         </div>
 
         <!-- content end -->
+    </div>
 
     </div>
+
 
 
 
@@ -195,7 +217,8 @@ Dashboard for ITManager
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="scriptMA.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="my_chart.js"></script>
+    {{-- <script src="my_chart.js"></script> --}}
+
     <script>
 
         Chart.defaults.font.family = 'Noto Sans Thai';
@@ -207,7 +230,7 @@ Dashboard for ITManager
           data: {
             datasets: [{
               label: 'ตารางงาน',
-              data: [2, 15, 30],
+              data: [{{$count_result_complete}}, {{$count_result_reserve}},{{$count_result_wait}}],
               borderWidth: 1,
               backgroundColor: ["rgba(255, 138, 0, 1)", "rgba(105, 55, 170, 1)", "rgba(247, 186, 30, 1)"],
             }]
@@ -223,6 +246,5 @@ Dashboard for ITManager
 
 
         </script>
-
 </body>
 </html>
