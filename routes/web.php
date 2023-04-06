@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\CON_login;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,15 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('loginhome');
-});
+
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/books', function (){
+    return view('loginhome');
 
-Route::get('/userhome', function () {
-    return view('userhome');
 });
+
+Route::get('/index', function () {
+    return 'loginhome';
+});
+Route::get('/', [App\Http\Controllers\CON_login::class,'index']);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/userhome', [App\Http\Controllers\CON_userhome::class, 'index']);
 
