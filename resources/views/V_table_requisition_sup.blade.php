@@ -2,10 +2,17 @@
 It support
 fix history table
 @Author : Nattawut Somdulyakanok 64160066
-@Create Date: 2023-03-04
+@Create Date: 2023-03-05
 --}}
 
+{{-- It support
+show form database(php)
+@Author : Veerachart Permjarat 64160287
+@Date :2023-04-06 --}}
+
+
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -47,23 +54,23 @@ fix history table
             <li class="list">
                 <b></b>
                 <b></b>
-                <a href="#">
+                <a href="{{route('dash_sup')}}">
                     <span class="icon"><ion-icon name="newspaper-outline"></ion-icon></span>
                     <span class="title">หน้าหลัก</span>
-                </a>
-            </li>
-            <li class="list">
-                <b></b>
-                <b></b>
-                <a href="IT_Support_Fix.html">
-                    <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
-                    <span class="title_2">ตารางซ่อม</span>
                 </a>
             </li>
             <li class="list active">
                 <b></b>
                 <b></b>
-                <a href="#">
+                <a href="{{route('repair_sup')}}">
+                    <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
+                    <span class="title_2">ตารางซ่อม</span>
+                </a>
+            </li>
+            <li class="list">
+                <b></b>
+                <b></b>
+                <a href="{{route('requsition_sup')}}">
                     <span class="icon"><ion-icon name="cube-outline"></ion-icon></span>
                     <span class="title_3">ตารางเบิก</span>
                 </a>
@@ -80,12 +87,12 @@ fix history table
 
         <nav>
             <ul>
-                <li><h4>นาย เอ บี</h4></li>
+                <li><h4>{{Auth::user()->name}}{{' '}}{{Auth::user()->emp_lname}}</h4></li>
                 <li><a>เจ้าหน้าที่ฝ่ายเทคนิค</a></li>
 
             </ul>
             <div class="line"></div>
-            <img src="img/xavier.png" class="profile" onclick="toggleMenu()">
+            <img src="imgpro/{{Auth::user()->emp_picture}}" class="profile" onclick="toggleMenu()">
 
             <div class="sub-menu-wrap" id="subMenu">
                 <div class="sub-menu-swap">
@@ -95,12 +102,19 @@ fix history table
                         <p>หน้าจอผู้ใช้บริการ</p>
                     </a>
                 </div>
+
                 <div class="sub-menu-logout">
-                    <a href="#" class="sub-menu-link">
+                    <a href="{{ route('logout') }}" class="sub-menu-link"
+                    onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
                         <img src="img/logout-icon.png">
                         <img src="img/whiite-logout-icon.png">
                         <p>ออกจากระบบ</p>
+
                     </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                    </form>
                 </div>
 
             </div>
@@ -133,17 +147,16 @@ fix history table
                         <td>เลขที่จอง</td>
                         <td>ชื่อ</td>
                         <td>อุปกรณ์</td>
-                        <td>ผู้อนุมัติการเบิก</td>
                         <td>วันที่รับเครื่องเข้าระบบ</td>
                         <td>สถานะ</td>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>000157</td>
+
+                    <tr></tr>
+                        <td>0001</td>
                         <td>สมชาย หยิ่งผยอง</td>
                         <td>เครื่องพิมพ์</td>
-                        <td>สมปอง เก่งการช่าง</td>
                         <td>11-03-23</td>
                         <td>
                             <select>
@@ -154,11 +167,11 @@ fix history table
                             </select>
                         </td>
                     </tr>
+
                     <tr>
                         <td>000158</td>
                         <td>สมชาย หยิ่งผยอง</td>
                         <td>เครื่องพิมพ์</td>
-                        <td>สมปอง เก่งการช่าง</td>
                         <td>11-03-23</td>
                         <td>
                             <select>
@@ -173,7 +186,6 @@ fix history table
                         <td>000159</td>
                         <td>สมชาย หยิ่งผยอง</td>
                         <td>เครื่องพิมพ์</td>
-                        <td>สมปอง เก่งการช่าง</td>
                         <td>11-03-23</td>
                         <td>
                             <select>
@@ -188,7 +200,6 @@ fix history table
                         <td>000160</td>
                         <td>สมชาย หยิ่งผยอง</td>
                         <td>เครื่องพิมพ์</td>
-                        <td>สมปอง เก่งการช่าง</td>
                         <td>11-03-23</td>
                         <td>
                             <select>
@@ -203,7 +214,6 @@ fix history table
                         <td>000161</td>
                         <td>สมชาย หยิ่งผยอง</td>
                         <td>เครื่องพิมพ์</td>
-                        <td>สมปอง เก่งการช่าง</td>
                         <td>11-03-23</td>
                         <td>
                             <select>
@@ -218,7 +228,6 @@ fix history table
                         <td>000162</td>
                         <td>สมชาย หยิ่งผยอง</td>
                         <td>เครื่องพิมพ์</td>
-                        <td>สมปอง เก่งการช่าง</td>
                         <td>11-03-23</td>
                         <td>
                             <select>
@@ -233,7 +242,6 @@ fix history table
                         <td>000163</td>
                         <td>สมชาย หยิ่งผยอง</td>
                         <td>เครื่องพิมพ์</td>
-                        <td>สมปอง เก่งการช่าง</td>
                         <td>11-03-23</td>
                         <td>
                             <select>
@@ -248,7 +256,6 @@ fix history table
                         <td>000164</td>
                         <td>สมชาย หยิ่งผยอง</td>
                         <td>เครื่องพิมพ์</td>
-                        <td>สมปอง เก่งการช่าง</td>
                         <td>11-03-23</td>
                         <td>
                             <select>

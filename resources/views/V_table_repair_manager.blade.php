@@ -41,7 +41,7 @@ fix history table
                 <li class="list">
                     <b></b>
                     <b></b>
-                    <a href="#">
+                    <a href="{{ Route('dash_manager') }}">
                         <span class="icon"><ion-icon name="newspaper-outline"></ion-icon></span>
                         <span class="title">หน้าหลัก</span>
                     </a>
@@ -49,7 +49,7 @@ fix history table
                 <li class="list active">
                     <b></b>
                     <b></b>
-                    <a href="#">
+                    <a href="{{ Route('repair_manager') }}">
                         <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
                         <span class="title_2">ตารางซ่อม</span>
                     </a>
@@ -57,7 +57,7 @@ fix history table
                 <li class="list">
                     <b></b>
                     <b></b>
-                    <a href="IT_Manager_Request.html">
+                    <a href="{{route('requsition_manager')}}">
                         <span class="icon"><ion-icon name="cube-outline"></ion-icon></span>
                         <span class="title_3">ตารางเบิก</span>
                     </a>
@@ -90,29 +90,34 @@ fix history table
 
         <nav>
             <ul>
-                <li><h4>นาย เอ บี</h4></li>
-                <li><a>เจ้าหน้าที่ฝ่ายเทคนิค</a></li>
-
+                <li><h4>{{Auth::user()->name}}{{' '}}{{Auth::user()->emp_lname}}</h4></li>
+                <li><a>ผู้จัดการฝ่ายเทคนิค</a></li>
             </ul>
+
             <div class="line"></div>
-            <img src="img/xavier.png" class="profile" onclick="toggleMenu()">
+            <img src="imgpro/{{Auth::user()->emp_picture}}" class="profile" onclick="toggleMenu()">
 
             <div class="sub-menu-wrap" id="subMenu">
                 <div class="sub-menu-swap">
-                    <a href="#" class="sub-menu-link">
+                    <a href="/userhome" class="sub-menu-link">
                         <img src="img/it-icon.png">
                         <img src="img/white-it-icon.png">
                         <p>หน้าจอผู้ใช้บริการ</p>
                     </a>
                 </div>
+
                 <div class="sub-menu-logout">
-                    <a href="#" class="sub-menu-link">
+                    <a href="{{ route('logout') }}" class="sub-menu-link"
+                    onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
                         <img src="img/logout-icon.png">
                         <img src="img/whiite-logout-icon.png">
                         <p>ออกจากระบบ</p>
                     </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                    </form>
                 </div>
-
             </div>
         </nav>
 
@@ -143,132 +148,41 @@ fix history table
                         <td>เลขที่จอง</td>
                         <td>ชื่อ</td>
                         <td>อุปกรณ์</td>
-                        <td>ผู้อนุมัติการเบิก</td>
                         <td>วันที่รับเครื่องเข้าระบบ</td>
                         <td>สถานะ</td>
                     </tr>
                 </thead>
                 <tbody>
+
+                        <?php
+                        $users = DB::table('users')
+                        ->join('task_repairs', 'users.id', '=', 'task_repairs.tr_emp_id')
+                        ->join('equipments', 'task_repairs.tr_eqm_id', '=', 'equipments.eqm_id')
+                        ->select('users.*', 'task_repairs.*','equipments.*',)
+                        ->get();
+                        $count = count($users);
+
+
+                    ?>
+                    @foreach ($users as $user)
                     <tr>
-                        <td>000157</td>
-                        <td>สมชาย หยิ่งผยอง</td>
-                        <td>เครื่องพิมพ์</td>
-                        <td>สมปอง เก่งการช่าง</td>
-                        <td>11-03-23</td>
+                        <td>{{ $user->id }}</td>
+                        <td>{{ $user->name }}&nbsp;&nbsp;{{ $user->emp_lname }}</td>
+                        <td>{{ $user->eqm_type }}</td>
+                        <td>{{ $user->tr_approved }}</td>
                         <td>
-                            <select>
-                                <option>🟣 จอง</option>
-                                <option>🟡 กำลังดำเนินการ</option>
-                                <option>🟢 ดำเนินการเสร็จสิ้น</option>
-                                <option>🔴 ดำเนินการไม่สำเร็จ</option>
-                            </select>
+                        <select>
+                        <option>🟣 จอง</option>
+                        <option>🟡 กำลังดำเนินการ</option>
+                        <option>🟢 ดำเนินการเสร็จสิ้น</option>
+                        <option>🔴 ดำเนินการไม่สำเร็จ</option>
+                        </select>
                         </td>
                     </tr>
-                    <tr>
-                        <td>000158</td>
-                        <td>สมชาย หยิ่งผยอง</td>
-                        <td>เครื่องพิมพ์</td>
-                        <td>สมปอง เก่งการช่าง</td>
-                        <td>11-03-23</td>
-                        <td>
-                            <select>
-                                <option>🟣 จอง</option>
-                                <option>🟡 กำลังดำเนินการ</option>
-                                <option>🟢 ดำเนินการเสร็จสิ้น</option>
-                                <option>🔴 ดำเนินการไม่สำเร็จ</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>000159</td>
-                        <td>สมชาย หยิ่งผยอง</td>
-                        <td>เครื่องพิมพ์</td>
-                        <td>สมปอง เก่งการช่าง</td>
-                        <td>11-03-23</td>
-                        <td>
-                            <select>
-                                <option>🟣 จอง</option>
-                                <option>🟡 กำลังดำเนินการ</option>
-                                <option>🟢 ดำเนินการเสร็จสิ้น</option>
-                                <option>🔴 ดำเนินการไม่สำเร็จ</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>000160</td>
-                        <td>สมชาย หยิ่งผยอง</td>
-                        <td>เครื่องพิมพ์</td>
-                        <td>สมปอง เก่งการช่าง</td>
-                        <td>11-03-23</td>
-                        <td>
-                            <select>
-                                <option>🟣 จอง</option>
-                                <option>🟡 กำลังดำเนินการ</option>
-                                <option>🟢 ดำเนินการเสร็จสิ้น</option>
-                                <option>🔴 ดำเนินการไม่สำเร็จ</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>000161</td>
-                        <td>สมชาย หยิ่งผยอง</td>
-                        <td>เครื่องพิมพ์</td>
-                        <td>สมปอง เก่งการช่าง</td>
-                        <td>11-03-23</td>
-                        <td>
-                            <select>
-                                <option>🟣 จอง</option>
-                                <option>🟡 กำลังดำเนินการ</option>
-                                <option>🟢 ดำเนินการเสร็จสิ้น</option>
-                                <option>🔴 ดำเนินการไม่สำเร็จ</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>000162</td>
-                        <td>สมชาย หยิ่งผยอง</td>
-                        <td>เครื่องพิมพ์</td>
-                        <td>สมปอง เก่งการช่าง</td>
-                        <td>11-03-23</td>
-                        <td>
-                            <select>
-                                <option>🟣 จอง</option>
-                                <option>🟡 กำลังดำเนินการ</option>
-                                <option>🟢 ดำเนินการเสร็จสิ้น</option>
-                                <option>🔴 ดำเนินการไม่สำเร็จ</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>000163</td>
-                        <td>สมชาย หยิ่งผยอง</td>
-                        <td>เครื่องพิมพ์</td>
-                        <td>สมปอง เก่งการช่าง</td>
-                        <td>11-03-23</td>
-                        <td>
-                            <select>
-                                <option>🟣 จอง</option>
-                                <option>🟡 กำลังดำเนินการ</option>
-                                <option>🟢 ดำเนินการเสร็จสิ้น</option>
-                                <option>🔴 ดำเนินการไม่สำเร็จ</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>000164</td>
-                        <td>สมชาย หยิ่งผยอง</td>
-                        <td>เครื่องพิมพ์</td>
-                        <td>สมปอง เก่งการช่าง</td>
-                        <td>11-03-23</td>
-                        <td>
-                            <select>
-                                <option>🟣 จอง</option>
-                                <option>🟡 กำลังดำเนินการ</option>
-                                <option>🟢 ดำเนินการเสร็จสิ้น</option>
-                                <option>🔴 ดำเนินการไม่สำเร็จ</option>
-                            </select>
-                        </td>
-                    </tr>
+                    @endforeach
+
+
+
 
 
                 </tbody>

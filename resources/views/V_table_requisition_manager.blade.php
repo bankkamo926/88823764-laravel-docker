@@ -1,6 +1,6 @@
 {{--
 It manager
-requisition history table
+fix history table
 @Author : Nattawut Somdulyakanok 64160066
 @Create Date: 2023-03-05
 --}}
@@ -41,23 +41,23 @@ requisition history table
                 <li class="list">
                     <b></b>
                     <b></b>
-                    <a href="#">
+                    <a href="{{ Route('dash_manager') }}">
                         <span class="icon"><ion-icon name="newspaper-outline"></ion-icon></span>
                         <span class="title">หน้าหลัก</span>
-                    </a>
-                </li>
-                <li class="list">
-                    <b></b>
-                    <b></b>
-                    <a href="IT_Manager_Fix.html">
-                        <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
-                        <span class="title_2">ตารางซ่อม</span>
                     </a>
                 </li>
                 <li class="list active">
                     <b></b>
                     <b></b>
-                    <a href="IT_Manager_Request.html">
+                    <a href="{{ Route('repair_manager') }}">
+                        <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
+                        <span class="title_2">ตารางซ่อม</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <b></b>
+                    <b></b>
+                    <a href="{{route('requsition_manager')}}">
                         <span class="icon"><ion-icon name="cube-outline"></ion-icon></span>
                         <span class="title_3">ตารางเบิก</span>
                     </a>
@@ -143,19 +143,28 @@ requisition history table
                         <td>เลขที่จอง</td>
                         <td>ชื่อ</td>
                         <td>อุปกรณ์</td>
-                        <td>ผู้อนุมัติการเบิก</td>
                         <td>วันที่รับเครื่องเข้าระบบ</td>
                         <td>สถานะ</td>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>000157</td>
-                        <td>สมชาย หยิ่งผยอง</td>
-                        <td>เครื่องพิมพ์</td>
-                        <td>สมปอง เก่งการช่าง</td>
-                        <td>11-03-23</td>
+                        <?php
+                        $users = DB::table('users')
+                        ->join('task_requests', 'users.id', '=', 'task_repuest.tr_emp_id')
+                        ->join('equipments', 'task_requests.tr_eqm_id', '=', 'equipments.eqm_id')
+                        ->select('users.*', 'task_requests.tr_eqm_id','equipments.eqm_type')
+                        ->get();
+                        $count = count($users);
+
+
+                    ?>
+                    @foreach ($users as $user)
+                     <tr>
                         <td>
+                            <td>{{ $user->id }}</td>
+                            <td>{{ $user->name }}&nbsp;&nbsp;{{ $user->emp_lname }}</td>
+                            <td>{{ $user->epm_type}}</td>
+                            <td>{{ $user->tr_approved}}</td>
                             <select>
                                 <option>🟣 จอง</option>
                                 <option>🟡 กำลังดำเนินการ</option>
@@ -168,7 +177,6 @@ requisition history table
                         <td>000158</td>
                         <td>สมชาย หยิ่งผยอง</td>
                         <td>เครื่องพิมพ์</td>
-                        <td>สมปอง เก่งการช่าง</td>
                         <td>11-03-23</td>
                         <td>
                             <select>
@@ -183,7 +191,6 @@ requisition history table
                         <td>000159</td>
                         <td>สมชาย หยิ่งผยอง</td>
                         <td>เครื่องพิมพ์</td>
-                        <td>สมปอง เก่งการช่าง</td>
                         <td>11-03-23</td>
                         <td>
                             <select>
@@ -198,7 +205,6 @@ requisition history table
                         <td>000160</td>
                         <td>สมชาย หยิ่งผยอง</td>
                         <td>เครื่องพิมพ์</td>
-                        <td>สมปอง เก่งการช่าง</td>
                         <td>11-03-23</td>
                         <td>
                             <select>
@@ -213,7 +219,6 @@ requisition history table
                         <td>000161</td>
                         <td>สมชาย หยิ่งผยอง</td>
                         <td>เครื่องพิมพ์</td>
-                        <td>สมปอง เก่งการช่าง</td>
                         <td>11-03-23</td>
                         <td>
                             <select>
@@ -228,7 +233,6 @@ requisition history table
                         <td>000162</td>
                         <td>สมชาย หยิ่งผยอง</td>
                         <td>เครื่องพิมพ์</td>
-                        <td>สมปอง เก่งการช่าง</td>
                         <td>11-03-23</td>
                         <td>
                             <select>
@@ -243,7 +247,6 @@ requisition history table
                         <td>000163</td>
                         <td>สมชาย หยิ่งผยอง</td>
                         <td>เครื่องพิมพ์</td>
-                        <td>สมปอง เก่งการช่าง</td>
                         <td>11-03-23</td>
                         <td>
                             <select>
@@ -258,7 +261,6 @@ requisition history table
                         <td>000164</td>
                         <td>สมชาย หยิ่งผยอง</td>
                         <td>เครื่องพิมพ์</td>
-                        <td>สมปอง เก่งการช่าง</td>
                         <td>11-03-23</td>
                         <td>
                             <select>

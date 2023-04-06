@@ -38,7 +38,7 @@ Dashboard for ITManager
             <li class="list active">
                 <b></b>
                 <b></b>
-                <a href="#">
+                <a href="{{ Route('dash_manager') }}">
                     <span class="icon"><ion-icon name="newspaper-outline"></ion-icon></span>
                     <span class="title">หน้าหลัก</span>
                 </a>
@@ -46,7 +46,7 @@ Dashboard for ITManager
             <li class="list">
                 <b></b>
                 <b></b>
-                <a href="{{ url('repair_manager') }}">
+                <a href="{{ Route('repair_manager') }}">
                     <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
                     <span class="title_2">ตารางซ่อม</span>
                 </a>
@@ -54,7 +54,7 @@ Dashboard for ITManager
             <li class="list">
                 <b></b>
                 <b></b>
-                <a href="\requsition_manage">
+                <a href="{{route('requsition_manager')}}">
                     <span class="icon"><ion-icon name="cube-outline"></ion-icon></span>
                     <span class="title_3">ตารางเบิก</span>
                 </a>
